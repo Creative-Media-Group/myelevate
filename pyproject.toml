@@ -3,7 +3,7 @@ name = "myelevate"
 version = "0.1.3"
 description = "Python library for requesting root privileges"
 authors = ["tct123 <42028373+tct123@users.noreply.github.com>"]
-readme = "README.rst"
+readme = "README.md"
 repository = "https://github.com/Creative-Media-Group/myelevate"
 license = "MIT"
 
