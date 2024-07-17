@@ -1,6 +1,7 @@
 MyElevate: Request root privileges
 ================================
 
+A fork of https://github.com/barneygale/elevate
 MyElevate is a small Python library that re-launches the current process with
 root/admin privileges using one of the following mechanisms:
 
