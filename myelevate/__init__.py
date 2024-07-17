@@ -1,7 +1,7 @@
 import sys
 
 
-def elevate(show_console=True, graphical=True):
+def myelevate(show_console=True, graphical=True):
     """
     Re-launch the current process with root/admin privileges
 
@@ -16,8 +16,7 @@ def elevate(show_console=True, graphical=True):
         programs (gksudo, etc). Ignored on Windows.
     """
     if sys.platform.startswith("win"):
-        from elevate.windows import elevate
+        from myelevate.windows import myelevate
     else:
-        from elevate.posix import elevate
-    elevate(show_console, graphical)
-
+        from myelevate.posix import myelevate
+    myelevate(show_console, graphical)

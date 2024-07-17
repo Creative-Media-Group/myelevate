@@ -20,21 +20,22 @@ PDWORD = ctypes.POINTER(DWORD)
 
 class ShellExecuteInfo(ctypes.Structure):
     _fields_ = [
-        ('cbSize',       DWORD),
-        ('fMask',        c_ulong),
-        ('hwnd',         HWND),
-        ('lpVerb',       c_char_p),
-        ('lpFile',       c_char_p),
-        ('lpParameters', c_char_p),
-        ('lpDirectory',  c_char_p),
-        ('nShow',        c_int),
-        ('hInstApp',     HINSTANCE),
-        ('lpIDList',     c_void_p),
-        ('lpClass',      c_char_p),
-        ('hKeyClass',    HKEY),
-        ('dwHotKey',     DWORD),
-        ('hIcon',        HANDLE),
-        ('hProcess',     HANDLE)]
+        ("cbSize", DWORD),
+        ("fMask", c_ulong),
+        ("hwnd", HWND),
+        ("lpVerb", c_char_p),
+        ("lpFile", c_char_p),
+        ("lpParameters", c_char_p),
+        ("lpDirectory", c_char_p),
+        ("nShow", c_int),
+        ("hInstApp", HINSTANCE),
+        ("lpIDList", c_void_p),
+        ("lpClass", c_char_p),
+        ("hKeyClass", HKEY),
+        ("dwHotKey", DWORD),
+        ("hIcon", HANDLE),
+        ("hProcess", HANDLE),
+    ]
 
     def __init__(self, **kw):
         super(ShellExecuteInfo, self).__init__()
@@ -49,7 +50,7 @@ PShellExecuteInfo = POINTER(ShellExecuteInfo)
 # Function definitions
 
 ShellExecuteEx = windll.shell32.ShellExecuteExA
-ShellExecuteEx.argtypes = (PShellExecuteInfo, )
+ShellExecuteEx.argtypes = (PShellExecuteInfo,)
 ShellExecuteEx.restype = BOOL
 
 WaitForSingleObject = windll.kernel32.WaitForSingleObject
@@ -57,23 +58,25 @@ WaitForSingleObject.argtypes = (HANDLE, DWORD)
 WaitForSingleObject.restype = DWORD
 
 CloseHandle = windll.kernel32.CloseHandle
-CloseHandle.argtypes = (HANDLE, )
+CloseHandle.argtypes = (HANDLE,)
 CloseHandle.restype = BOOL
 
 
 # At last, the actual implementation!
 
-def elevate(show_console=True, graphical=True):
+
+def myelevate(show_console=True, graphical=True):
     if windll.shell32.IsUserAnAdmin():
         return
 
     params = ShellExecuteInfo(
         fMask=SEE_MASK_NOCLOSEPROCESS | SEE_MASK_NO_CONSOLE,
         hwnd=None,
-        lpVerb=b'runas',
-        lpFile=sys.executable.encode('cp1252'),
-        lpParameters=subprocess.list2cmdline(sys.argv).encode('cp1252'),
-        nShow=int(show_console))
+        lpVerb=b"runas",
+        lpFile=sys.executable.encode("cp1252"),
+        lpParameters=subprocess.list2cmdline(sys.argv).encode("cp1252"),
+        nShow=int(show_console),
+    )
 
     if not ShellExecuteEx(ctypes.byref(params)):
         raise ctypes.WinError()
