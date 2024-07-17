@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="myelevate",
     version="0.1.3",
-    author="Barney Gale",
+    author="tct123",
     author_email="barney.gale@gmail.com",
     url="https://github.com/barneygale/myelevate",
     license="MIT",
