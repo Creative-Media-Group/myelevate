@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(
-    name='elevate',
+    name='myelevate',
     version='0.1.3',
     author='Barney Gale',
     author_email='barney.gale@gmail.com',
