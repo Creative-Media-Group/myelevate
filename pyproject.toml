@@ -5,6 +5,7 @@ description = ""
 authors = ["tct123 <42028373+tct123@users.noreply.github.com>"]
 readme = "README.rst"
 repository = "https://github.com/Creative-Media-Group/myelevate"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
