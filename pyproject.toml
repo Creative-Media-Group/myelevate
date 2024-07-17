@@ -4,6 +4,7 @@ version = "0.1.3"
 description = ""
 authors = ["tct123 <42028373+tct123@users.noreply.github.com>"]
 readme = "README.rst"
+repository = "https://github.com/Creative-Media-Group/myelevate"
 
 [tool.poetry.dependencies]
 python = "^3.8"
