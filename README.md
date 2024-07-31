@@ -6,17 +6,17 @@ MyElevate is a small Python library that re-launches the current process with ro
 -   `pkexec`, `gksudo` or `kdesudo` (Linux)
 -   `sudo` (Linux, macOS)
 ## Usage
-To use, call `elevate.elevate()` early in your script. When run as root this function does nothing. When not run as root, this function replaces the current process (Linux, macOS) or creates a new process, waits, and exits (Windows). Consider the following example:
+To use, call `myelevate.myelevate()` early in your script. When run as root this function does nothing. When not run as root, this function replaces the current process (Linux, macOS) or creates a new process, waits, and exits (Windows). Consider the following example:
 
 ``` python
 import os
-from elevate import elevate
+from myelevate import myelevate
 
 def is_root():
     return os.getuid() == 0
 
 print("before ", is_root())
-elevate()
+myelevate()
 print("after ", is_root())
 ```
 
